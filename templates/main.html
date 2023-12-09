@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+    <title>Boggle</title>
+    <!-- <link rel="stylesheet" href="/static/boggle.css"> -->
+    </head>
+    <body>
+        <h3>High Score{{highscore}}</h3>
+        <h3>Times played{{nplays}}</h3>
+        <table>
+<!--gameboard created from boggle_game.make_board method; is a list with sublists-->
+<!--does this make new tr for each iteration?-->
+<!--does not need brackets around gameboard; reveiw-->
+            {% for row in gameBoard %}   
+            <tr>
+                
+                {%for cell in row%}
+    <!--forgot to put text in td; why double brackets?-->
+    <!--double brackets?-->
+                <td>{{cell}}</td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </table>
+        <section>
+    <!--when update object attribute, does it autommatically get inserted in as <b> text-->
+            Score: <b class="score">{{score}}</b>
+            Seconds Left: <b class="timer"></b>
+            <p class=msg></p>
+        </section>
+        <div>
+
+        </div>
+
+    <!--can I include text by plaing it between form tags?-->
+        <form method="post">Guess
+            <input type="text" name="guess">
+            <button>Submit</button>
+        </form>
+        <script src="http://unpkg.com/jquery"></script>
+        <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+        <script src="/static/main.js"></script>
+        <script>
+            let game = new BoggleGame() 
+        </script>
+
+
+
+    </body>
+</html>
